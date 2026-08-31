@@ -1,0 +1,52 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: smartpark-backend
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:smartpark_db}?useSSL=false&serverTimezone=Asia/Kolkata&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+
+# Application Custom Configurations
+app:
+  jwt:
+    secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000} # 24 hours
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000}
+  razorpay:
+    key-id: ${RAZORPAY_KEY_ID:rzp_test_SmartParkDemo123}
+    key-secret: ${RAZORPAY_KEY_SECRET:SmartParkRazorpaySecretKey2026}
+  tax:
+    gst-enabled: ${GST_ENABLED:true}
+    cgst-rate: ${CGST_RATE:9.0}
+    sgst-rate: ${SGST_RATE:9.0}
+  cancellation:
+    min-minutes-before-start: 30
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.smartpark: INFO
+    org.springframework.security: DEBUG

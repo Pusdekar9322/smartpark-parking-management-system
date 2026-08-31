@@ -1,0 +1,12 @@
+package com.smartpark.enums;
+
+public enum NotificationType {
+    BOOKING_CONFIRMED,
+    PAYMENT_SUCCESS,
+    BOOKING_CANCELLED,
+    BOOKING_REMINDER,
+    PARKING_COMPLETED,
+    INVOICE_GENERATED,
+    PASS_ACTIVATED,
+    PASS_CANCELLED
+}
